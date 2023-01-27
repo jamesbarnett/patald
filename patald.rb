@@ -50,6 +50,6 @@ class BaseMeasurements
 end
 
 if __FILE__ == $0
-  x = BaseMeasurements.new(16, 41.0, 20.0, 29.0, 8.5, 8.0, 2.0)
+  x = BaseMeasurements.new(16.0, 41.0, 20.0, 29.0, 8.5, 8.0, 2.0)
   puts "x is #{x.inspect}"
 end
