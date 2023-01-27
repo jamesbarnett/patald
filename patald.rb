@@ -2,7 +2,7 @@
 
 require 'geometry'
 
-class BaseMeasurements
+class SimpleBodice
   include Geometry
 
   attr_accessor :customer_id, :neck, :chest, :shoulders, :scye, :neck_to_waist, :shirt_length,
@@ -50,6 +50,6 @@ class BaseMeasurements
 end
 
 if __FILE__ == $0
-  x = BaseMeasurements.new(16.0, 41.0, 20.0, 29.0, 8.5, 8.0, 2.0)
+  x = SimpleBodice.new(16.0, 41.0, 20.0, 29.0, 8.5, 8.0, 2.0)
   puts "x is #{x.inspect}"
 end
