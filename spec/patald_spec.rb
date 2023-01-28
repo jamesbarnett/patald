@@ -3,7 +3,7 @@ describe 'BaseMeasurements' do
     
   end
 
-  it "serlizes to JSON" do
+  it "serializes to JSON" do
 
   end
 end
