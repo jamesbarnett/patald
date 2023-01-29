@@ -1,2 +1,4 @@
 Gemfile.lock
 .rspec
+*.pdf # just ignore all pdf output for now
+

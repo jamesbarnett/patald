@@ -49,8 +49,8 @@ class SimpleBodice
   end
 
   def back_work
-    self.points[9] = Geometry::Point[(self.neck / 5.0), self.points[1].y]
-    self.points[10] = Geometry::Point[(self.neck / 5.0), self.origin.y]
+    points[9] = Geometry::Point[(neck / 5.0), points[1].y]
+    points[10] = Geometry::Point[(neck / 5.0), origin.y]
     # back of neck curve work goes here.
 
     # self.point11 = Geometry::Point[self.point((self.point1.y + self.point2.y) / 2.0)]
@@ -58,7 +58,7 @@ class SimpleBodice
   end
 end
 
-if __FILE__ == $0
+if __FILE__ == $PROGRAM_NAME
   x = SimpleBodice.new(16.0, 41.0, 20.0, 29.0, 8.5, 8.0, 2.0)
   puts "x is #{x.inspect}"
 end
