@@ -6,11 +6,14 @@ require 'prawn'
 # outputs to PDF
 class PdfFormatter
   include Geometry
-  def initialize # brush options and stuff?)
 
+  attr_accessor :doc
+
+  def initialize(doc)
+    self.doc = doc
   end
 
-  def render(doc, h)
+  def render(h)
     doc.stroke do
       puts "Moving to first point"
 
@@ -29,9 +32,9 @@ end
 if __FILE__ == $0
   Prawn::Document.generate("hello.pdf") do |doc|
     doc.text 'Hello World!'
-    formatter = PdfFormatter.new
-    formatter.render(doc, { 1 => Geometry::Point[10, 10], 
-                            2 => Geometry::Point[100, 100] })
+    formatter = PdfFormatter.new doc
+    formatter.render({ 1 => Geometry::Point[10, 10], 
+                       2 => Geometry::Point[100, 100] })
 
   end
 
