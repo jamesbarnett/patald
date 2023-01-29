@@ -58,7 +58,7 @@ class SimpleBodice
   end
 end
 
-if __FILE__ == $PROGRAM_NAME
+if $0 == $__FILE__
   x = SimpleBodice.new(16.0, 41.0, 20.0, 29.0, 8.5, 8.0, 2.0)
   puts "x is #{x.inspect}"
 end
