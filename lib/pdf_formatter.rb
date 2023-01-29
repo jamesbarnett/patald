@@ -5,6 +5,7 @@ $:.unshift(File.join(Dir.pwd, ".."))
 require 'geometry'
 require 'pathname'
 require 'prawn'
+require 'prawn/measurement_extensions'
 require_relative 'simple_bodice'
 
 # outputs to PDF
@@ -18,26 +19,34 @@ class PdfFormatter
   end
 
   def render(h)
+    # TODO: Need a coordinate translation class
     doc.stroke do
-      doc.move_to h.first.last.x, h.first.last.y
+      # doc.move_to h.first.last.x.send(:in), h.first.last.y.send(:in)
+      doc.move_to point_to_inches(h.first.last)
 
       h.each_key do |point|
         # Need to put some thinking into this for curves
-        doc.line_to(h[point].x, h[point].y) if point != h.keys.first
+        puts "Point: #{h[point]}"
+        doc.line_to(point_to_inches(h[point])) if point != h.keys.first
       end
 
-      doc.line_to h.first.last.x, h.first.last.y
+      doc.line_to point_to_inches(h.first.last)
     end
+  end
+
+  def point_to_inches(pt)
+    [pt.x.send(:in), pt.y.send(:in)]
   end
 end
 
 if __FILE__ == $0
+  fn = 'hello.pdf'
   x = SimpleBodice.new(16.0, 41.0, 20.0, 29.0, 8.5, 8.0, 2.0)
-  Prawn::Document.generate("hello.pdf") do |doc|
+  Prawn::Document.generate(fn) do |doc|
     doc.text 'Hello World!'
     formatter = PdfFormatter.new doc
     formatter.render(x.points)
   end
 
-  `evince hello.pdf`
+  `evince #{fn}`
 end
