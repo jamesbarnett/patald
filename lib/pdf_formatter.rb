@@ -1,7 +1,11 @@
 #!/usr/bin/env ruby
 
+$:.unshift(File.join(Dir.pwd, ".."))
+
 require 'geometry'
+require 'pathname'
 require 'prawn'
+require_relative 'simple_bodice'
 
 # outputs to PDF
 class PdfFormatter
@@ -30,12 +34,13 @@ class PdfFormatter
 end
 
 if __FILE__ == $0
+  x = SimpleBodice.new(16.0, 41.0, 20.0, 29.0, 8.5, 8.0, 2.0)
   Prawn::Document.generate("hello.pdf") do |doc|
     doc.text 'Hello World!'
     formatter = PdfFormatter.new doc
-    formatter.render({ 1 => Geometry::Point[10, 10], 
-                       2 => Geometry::Point[100, 100] })
-
+    # formatter.render({ 1 => Geometry::Point[10, 10], 
+    #                    2 => Geometry::Point[100, 100] })
+    formatter.render(x.points)
   end
 
   `evince hello.pdf`
