@@ -1,7 +1,5 @@
 #!/usr/bin/env ruby
 
-$:.unshift(File.join(Dir.pwd, ".."))
-
 require 'geometry'
 require 'pathname'
 require 'prawn'
