@@ -40,7 +40,7 @@ end
 if __FILE__ == $0
   fn = 'hello.pdf'
   x = SimpleBodice.new(16.0, 41.0, 20.0, 29.0, 8.5, 8.0, 2.0)
-  Prawn::Document.generate(fn) do |doc|
+  Prawn::Document.generate(fn, page_size: x.size, layout: :portrait) do |doc|
     doc.text 'Hello World!'
     formatter = PdfFormatter.new doc
     formatter.render(x.points)
@@ -48,3 +48,4 @@ if __FILE__ == $0
 
   `evince #{fn}`
 end
+

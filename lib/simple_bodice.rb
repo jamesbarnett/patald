@@ -56,6 +56,11 @@ class SimpleBodice
     # self.point11 = Geometry::Point[self.point((self.point1.y + self.point2.y) / 2.0)]
     # Consider splitting into front bodice pattern, rear bodice pattern, and sleeve pattern
   end
+
+  def size
+    # Keeping it simple for now, just 24x30 inches
+    [24 * 72, 30 * 72]
+  end
 end
 
 if $0 == $__FILE__
