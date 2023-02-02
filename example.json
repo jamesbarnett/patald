@@ -1,0 +1,13 @@
+{
+  "neck":16.0,
+  "chest":41.0,
+  "shoulders":17.0,
+  "scye":8.5,
+  "neck_to_waist":20.0,
+  "shirt_length":29.0,
+  "center_back":8.0,
+  "seam_allowance":0.5,
+  "neck_offset":1.25,
+  "torso_ease": 2.0,
+  "sleeve_ease": 2.0
+}

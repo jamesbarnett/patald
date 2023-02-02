@@ -20,7 +20,7 @@ class SimpleBodice
                  neck_offset = 1.25,
                  seam_allowance = 0.5)
     self.points = {}
-    self.origin = Geometry::Point[0, 0]
+    self.origin = Geometry::Point[500, 32 * 72]
     self.scye = scye
     self.neck = neck
     self.chest = chest
@@ -28,6 +28,7 @@ class SimpleBodice
     self.shirt_length = shirt_length
     self.center_back = center_back
     self.seam_allowance = seam_allowance
+
     points[1] = Geometry::Point[origin.x, neck_offset]
     points[2] = Geometry::Point[origin.x, scye + points[1].y]
     points[3] = Geometry::Point[origin.x, neck_to_waist + points[1].y]
@@ -45,21 +46,25 @@ class SimpleBodice
   end
 
   def quarter_chest(ease)
-    Geometry::Point[0, chest / 4.0 + ease * seam_allowance]
+    Geometry::Point[0, 0.25 * chest + ease * seam_allowance]
   end
 
   def back_work
-    points[9] = Geometry::Point[(neck / 5.0), points[1].y]
-    points[10] = Geometry::Point[(neck / 5.0), origin.y]
+    points[9] = Geometry::Point[(0.2 * neck), points[1].y]
+    points[10] = Geometry::Point[(0.2 * neck), origin.y]
     # back of neck curve work goes here.
 
-    # self.point11 = Geometry::Point[self.point((self.point1.y + self.point2.y) / 2.0)]
+    sleeve_adjustment_line_y = (0.5 * (points[1].y + points[2].y))
+    self.points[11] = Geometry::Point[points[1].x, sleeve_adjustment_line_y]
     # Consider splitting into front bodice pattern, rear bodice pattern, and sleeve pattern
+    self.points[12] = Geometry::Point[points[1].x + center_back + seam_allowance, 
+                                      sleeve_adjustment_line_y]
   end
 
   def size
     # Keeping it simple for now, just 24x30 inches
     [24 * 72, 30 * 72]
+    #[48 * 72, 60 * 72]
   end
 end
 
