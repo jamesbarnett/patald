@@ -29,13 +29,13 @@ class SimpleBodice
     self.center_back = center_back
     self.seam_allowance = seam_allowance
 
-    points[1] = Geometry::Point[origin.x, neck_offset]
-    points[2] = Geometry::Point[origin.x, scye + points[1].y]
-    points[3] = Geometry::Point[origin.x, neck_to_waist + points[1].y]
+    points[1] = Geometry::Point[origin.x, -neck_offset]
+    points[2] = Geometry::Point[origin.x, -(scye + points[1].y)]
+    points[3] = Geometry::Point[origin.x, -(neck_to_waist + points[1].y)]
     points[4] = Geometry::Point[origin.x,
-                                shirt_length + 2.0 * seam_allowance + points[1].y]
+                                -(shirt_length + 2.0 * seam_allowance + points[1].y)]
     points[5] = Geometry::Point[origin.first,
-                                quarter_chest(torso_ease).y + points[1].y]
+                                -(quarter_chest(torso_ease).y + points[1].y)]
     points[6] = Geometry::Point[points[5].x, points[5].y]
     points[7] = Geometry::Point[points[5].x, points[3].y]
     points[8] = Geometry::Point[points[5].x, points[4].y]
