@@ -30,19 +30,27 @@ class SimpleBodice
     self.seam_allowance = seam_allowance
 
     points[1] = Geometry::Point[origin.x, -neck_offset]
+    print_point(points[1], "Point 1")
     points[2] = Geometry::Point[origin.x, -(scye + points[1].y)]
+    print_point(points[2], "Point 2")
     points[3] = Geometry::Point[origin.x, -(neck_to_waist + points[1].y)]
-    points[4] = Geometry::Point[origin.x,
-                                -(shirt_length + 2.0 * seam_allowance + points[1].y)]
-    points[5] = Geometry::Point[origin.first,
-                                -(quarter_chest(torso_ease).y + points[1].y)]
-    points[6] = Geometry::Point[points[5].x, points[5].y]
-    points[7] = Geometry::Point[points[5].x, points[3].y]
-    points[8] = Geometry::Point[points[5].x, points[4].y]
+    print_point(points[3], "Point 3")
+
+    #points[4] = Geometry::Point[origin.x,
+                                # -(shirt_length + 2.0 * seam_allowance + points[1].y)]
+    # points[5] = Geometry::Point[origin.first,
+                                # -(quarter_chest(torso_ease).y + points[1].y)]
+    # points[6] = Geometry::Point[points[5].x, points[5].y]
+    # points[7] = Geometry::Point[points[5].x, points[3].y]
+    # points[8] = Geometry::Point[points[5].x, points[4].y]
 
     # Above should possibly be extracted into "base grid" method
-    quarter_chest(torso_ease)
-    back_work
+    # quarter_chest(torso_ease)
+    # back_work
+  end
+
+  def print_point(pt, msg)
+    puts "#{msg.blank? ? "" : "#{msg} " }Point: (#{pt.x}, #{pt.y})"
   end
 
   def quarter_chest(ease)
