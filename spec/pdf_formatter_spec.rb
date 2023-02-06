@@ -1,4 +1,6 @@
+require 'geometry'
 require 'spec_helper'
+require 'pattern_component'
 
 describe "PdfFormatter" do
   # it "draws a box" do
