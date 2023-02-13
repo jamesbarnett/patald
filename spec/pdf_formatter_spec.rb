@@ -23,5 +23,6 @@ describe 'PdfCoordinateTranslator' do
     pt = Geometry::Point[1.0, -2.0]
     pc.add_point(1.0, -2.0)
     pf = PdfCoordinateTranslator.new(pc.points, 32.0, 16.0)
+    expect(pf.translate.first).to eq(Geometry::Point[72.0, 1296.0])
   end
 end

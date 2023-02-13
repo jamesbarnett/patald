@@ -9,11 +9,11 @@ class PdfCoordinateTranslator
   def initialize(points, width, height)
     self.width = width * PPI
     self.height = height * PPI
-    self.points = translate(points)
+    self.points = points
   end
 
-  def translate(points)
-    points.map {|e| Geometry::Point[e.x * PPI, height - e.y] }
+  def translate
+    points.map {|e| Geometry::Point[e.x * PPI, height - (e.y * PPI)] }
   end
 end
 
