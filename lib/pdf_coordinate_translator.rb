@@ -17,10 +17,14 @@ class PdfCoordinateTranslator
 
   def translate
     points.map do |e|
-      puts "e (#{e}) => #{e.y * PPI + doc.page.margins}"
-      Geometry::Point[e.x * PPI, (height - 
-      (e.y * PPI + doc.page.margins))]
+      # puts "e (#{e}) => #{e.y * PPI + doc.page.margins}"
+      t e
     end
+  end
+
+  def t(pt)
+    Geometry::Point[pt.x * PPI, (height - (pt.y * PPI + doc.page.margins[:top] +
+                                           doc.page.margins[:bottom]))]
   end
 
   def render
