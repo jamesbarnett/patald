@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby\
 
+require 'prawn/measurement_extensions'
 
 # Translates from inches to pdf points and corrects for axis orientation
 #
